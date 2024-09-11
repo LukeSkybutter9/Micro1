@@ -10,7 +10,7 @@ public interface OrdenService {
 
     public Orden actualizarOrden(Long id, Orden ordenDetalles);
 
-    public Orden modificarOrden(Long id);
+    public Orden modificarStatusOrden(Long id, Boolean status);
 
     public void eliminarOrden(Long id);
 }

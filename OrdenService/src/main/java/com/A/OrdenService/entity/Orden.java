@@ -18,6 +18,6 @@ public class Orden {
     private Long userId;
     private Long productId;
     private Long quantity;
-    private Long status;
+    private Boolean status;
 
 }

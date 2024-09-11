@@ -35,8 +35,10 @@ public class OrdenServiceImp implements OrdenService{
     }
 
     @Override
-    public Orden modificarOrden(Long id) {
-        return null;
+    public Orden modificarStatusOrden(Long id, Boolean status) {
+        Orden orden = ordenRepository.findById(id).orElseThrow(()-> new RuntimeException("No se encontro la orden"));
+        orden.setStatus(status);
+        return ordenRepository.save(orden);
     }
 
     @Override

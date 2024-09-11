@@ -12,6 +12,7 @@ public class OrdenController {
 
     private final OrdenService ordenService;
 
+
     public OrdenController(OrdenService ordenService) {
         this.ordenService = ordenService;
     }
@@ -21,23 +22,24 @@ public class OrdenController {
         return ResponseEntity.ok(ordenService.registrarOrden(orden));
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Orden> buscarOrdenPorId(@PathVariable Long id) {
         return ResponseEntity.ok(ordenService.buscarOrdenPorId(id));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Orden> actualizarOrden(@PathVariable Long id, @RequestBody Orden orden) {
         return ResponseEntity.ok(ordenService.actualizarOrden(id, orden));
     }
 
 
-    /*@PatchMapping
-    public ResponseEntity<Orden> actualizarOrden(@RequestBody Orden orden) {
-        
-    }*/
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<Orden> modificarStatusOrden(@PathVariable Long id, @RequestBody Boolean Status) {
+        Orden ordenmodificado = ordenService.modificarStatusOrden(id, Status);
+        return ResponseEntity.ok(ordenmodificado);
+    }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarOrden(@PathVariable Long id) {
         ordenService.eliminarOrden(id);
         return null;
